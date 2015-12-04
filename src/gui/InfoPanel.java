@@ -1,4 +1,4 @@
-package behaviour;
+package gui;
 
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -10,6 +10,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
+
+import behaviour.Element;
+import behaviour.GameObject;
+import behaviour.RigidBody;
 
 import com.sun.javafx.Utils;
 
@@ -35,7 +39,7 @@ public class InfoPanel extends JPanel {
 		
 		if(obj != null){
 			// Name //
-			JTextField nameField = new JTextField(obj.name);
+			JTextField nameField = new JTextField(obj.getName());
 			JButton renameButton = new JButton("Rename");
 			nameField.setPreferredSize(new Dimension(150, 25));
 			renameButton.addActionListener(new ActionListener(){

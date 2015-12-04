@@ -1,8 +1,10 @@
-package behaviour;
+package gui;
 
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
+
+import behaviour.GameObject;
 
 public class Scene extends JPanel {
 

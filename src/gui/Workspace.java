@@ -1,8 +1,10 @@
-package behaviour;
+package gui;
 
 import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
+
+import behaviour.Element;
 
 public class Workspace extends JSplitPane {
 

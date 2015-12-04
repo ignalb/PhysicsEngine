@@ -1,4 +1,4 @@
-package behaviour;
+package gui;
 
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -9,6 +9,8 @@ import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import behaviour.RigidBody;
 
 public class RigidBodyPanel extends JPanel {
 
