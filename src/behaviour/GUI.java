@@ -21,6 +21,7 @@ public class GUI {
 		window.add(pane, BorderLayout.CENTER);
 		window.pack();
 		
+		work.setDividerLocation(0.15);
 		pane.setDividerSize(3);
 		pane.setDividerLocation(0.6);
 		
