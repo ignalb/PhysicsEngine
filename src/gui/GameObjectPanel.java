@@ -12,14 +12,26 @@ import javax.swing.JTextField;
 
 import behaviour.GameObject;
 
-public class GameObjectPanel extends JPanel {
+public class GameObjectPanel extends ElementPanel {
 
 	private static final long serialVersionUID = -4373294727625702474L;
 	
 	GameObject obj;
+	JTextField transformX, transformY, scaleX, scaleY, rotationT;
 	
-	public GameObjectPanel(GameObject obj){
-		this.obj = obj;
+	public void reload(){
+		if(obj != null){
+			transformX.setText(String.valueOf(obj.getXPos()));
+			transformY.setText(String.valueOf(obj.getYPos()));
+			scaleX.setText(String.valueOf(obj.getXScale()));
+			scaleY.setText(String.valueOf(obj.getXScale()));
+			rotationT.setText(String.valueOf(obj.getRotation()));
+		}
+	}
+	
+	public GameObjectPanel(GameObject objE){
+		super(objE);
+		this.obj = objE;
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		
 		JPanel transform = new JPanel();
@@ -32,8 +44,8 @@ public class GameObjectPanel extends JPanel {
 		scale.setBorder(BorderFactory.createTitledBorder("Scale"));
 		
 		// Transform //
-		JTextField transformX = new JTextField(String.valueOf(obj.getXPos()));
-		JTextField transformY = new JTextField(String.valueOf(obj.getYPos()));
+		transformX = new JTextField(String.valueOf(obj.getXPos()));
+		transformY = new JTextField(String.valueOf(obj.getYPos()));
 		transformX.setPreferredSize(numberFieldSize);
 		transformY.setPreferredSize(numberFieldSize);
 		transform.add(new JLabel("x"));
@@ -42,14 +54,14 @@ public class GameObjectPanel extends JPanel {
 		transform.add(transformY);
 		
 		// Rotation //
-		JTextField rotationT = new JTextField(String.valueOf(obj.getRotation()));
+		rotationT = new JTextField(String.valueOf(obj.getRotation()));
 		rotationT.setPreferredSize(numberFieldSize);
 		rotation.add(new JLabel("T"));
 		rotation.add(rotationT);
 		
 		// Scale //
-		JTextField scaleX = new JTextField(String.valueOf(obj.getXScale()));
-		JTextField scaleY = new JTextField(String.valueOf(obj.getYScale()));
+		scaleX = new JTextField(String.valueOf(obj.getXScale()));
+		scaleY = new JTextField(String.valueOf(obj.getYScale()));
 		scaleX.setPreferredSize(numberFieldSize);
 		scaleY.setPreferredSize(numberFieldSize);
 		scale.add(new JLabel("x"));
