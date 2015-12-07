@@ -14,4 +14,8 @@ public class Element {
 		return name;
 	}
 	
+	public String toString(){
+		return name;
+	}
+	
 }
