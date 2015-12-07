@@ -6,6 +6,8 @@ import java.util.Arrays;
 import util.Vector2;
 
 public class RigidBody extends GameObject {
+	final double g = 9.81;
+	
 	double mass;
 	Vector2 velocity, acceleration;
 	boolean naturalGrav = true;		// Affected by local gravity where g = 9.81
@@ -25,6 +27,9 @@ public class RigidBody extends GameObject {
 	}
 	public void setGrav(boolean grav){
 		naturalGrav = false;
+	}
+	public boolean isGrav(){
+		return naturalGrav;
 	}
 	
 	public void addVelocity(Vector2... v){

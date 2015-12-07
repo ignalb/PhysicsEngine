@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -17,6 +18,7 @@ public class RigidBodyPanel extends GameObjectPanel {	//TODO extend GameObject a
 
 	private static final long serialVersionUID = 2146620027857085465L;
 
+	JCheckBox gravB;
 	JTextField massM;
 	RigidBody obj;
 	
@@ -33,14 +35,27 @@ public class RigidBodyPanel extends GameObjectPanel {	//TODO extend GameObject a
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		
 		JPanel propertiesPanel = new JPanel();
+		propertiesPanel.setBorder(BorderFactory.createTitledBorder("Rigidbody"));
 		
-		propertiesPanel.setBorder(BorderFactory.createTitledBorder("Properties"));
+		JPanel mass = new JPanel();
+		JPanel grav = new JPanel();
 		
 		// Mass //
 		massM = new JTextField(String.valueOf(obj.getMass()));
 		massM.setPreferredSize(new Dimension(50, 25));
-		propertiesPanel.add(new JLabel("Mass"));
-		propertiesPanel.add(massM);
+		mass.add(new JLabel("Mass"));
+		mass.add(massM);
+		
+		// Gravity //
+		gravB = new JCheckBox();
+		gravB.setSelected(obj.isGrav());
+		JLabel gravLabel = new JLabel("Gravity");
+		gravLabel.getAccessibleContext().setAccessibleDescription("Is Affected by Gravity");
+		grav.add(gravLabel);
+		grav.add(gravB);
+		
+		propertiesPanel.add(mass);
+		propertiesPanel.add(grav);
 		
 		add(propertiesPanel);
 		
@@ -49,6 +64,11 @@ public class RigidBodyPanel extends GameObjectPanel {	//TODO extend GameObject a
 			public void actionPerformed(ActionEvent e){
 				obj.setMass(Double.parseDouble(massM.getText()));
 				Utils.debug("Changed mass of " + obj + " to " + massM.getText());
+			}
+		});
+		gravB.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent arg0) {
+				obj.setGrav(gravB.isSelected());
 			}
 		});
 		
